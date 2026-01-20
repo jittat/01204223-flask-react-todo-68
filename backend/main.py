@@ -29,7 +29,7 @@ def new_todo(data):
     return {
         "id": id,
         "title": data['title'],
-        "done": getattr(data, 'done', False),
+        "done": data.get('done', False),
     }
 
 @app.route('/api/todos/', methods=['POST'])
