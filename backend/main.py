@@ -8,10 +8,12 @@ app = Flask(__name__)
 CORS(app)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///todos.db'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://todotest:helloworld@localhost/todotest'
 
 db.init_app(app)
 migrate = Migrate(app, db)
 
+"""
 INITIAL_TODOS = [
     TodoItem(title='Learn Flask'),
     TodoItem(title='Build a Flask App'),
@@ -22,6 +24,7 @@ with app.app_context():
         for item in INITIAL_TODOS:
             db.session.add(item)
         db.session.commit()
+"""
 
 @app.route('/api/todos/', methods=['GET'])
 def get_todos():
